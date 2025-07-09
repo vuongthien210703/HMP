@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Yêu HMP</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, #ffe6f0, #ffffff);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff3366;
+      text-shadow: 2px 2px 5px rgba(255, 0, 64, 0.3);
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: floatUp 4s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.5) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Yêu HMP ❤️</h1>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
